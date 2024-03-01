@@ -8,9 +8,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import ru.samsung.gamestudio.GameSession;
 import ru.samsung.gamestudio.GameSettings;
 import ru.samsung.gamestudio.MyGdxGame;
+import ru.samsung.gamestudio.objects.BulletObject;
 import ru.samsung.gamestudio.objects.ShipObject;
 import ru.samsung.gamestudio.objects.TrashObject;
 
+import javax.crypto.spec.PSource;
 import java.util.ArrayList;
 
 public class GameScreen extends ScreenAdapter {
@@ -20,12 +22,14 @@ public class GameScreen extends ScreenAdapter {
     ShipObject shipObject;
 
     ArrayList<TrashObject> trashArray;
+    ArrayList<BulletObject> bulletArray;
 
     public GameScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         gameSession = new GameSession();
 
         trashArray = new ArrayList<>();
+        bulletArray = new ArrayList<>();
 
         shipObject = new ShipObject((GameSettings.SCREEN_WIDTH / 2f), 150, myGdxGame.world);
     }
@@ -46,7 +50,17 @@ public class GameScreen extends ScreenAdapter {
             trashArray.add(trashObject);
         }
 
+        if (shipObject.needToShoot()) {
+            BulletObject laserBullet = new BulletObject(
+                    shipObject.getX(),
+                    shipObject.getY() + shipObject.height / 2,
+                    myGdxGame.world
+            );
+            bulletArray.add(laserBullet);
+        }
+
         updateTrash();
+        updateBullets();
 
         draw();
     }
@@ -67,6 +81,7 @@ public class GameScreen extends ScreenAdapter {
         myGdxGame.batch.begin();
         for (TrashObject trash : trashArray) trash.draw(myGdxGame.batch);
         shipObject.draw(myGdxGame.batch);
+        for (BulletObject bullet : bulletArray) bullet.draw(myGdxGame.batch);
         myGdxGame.batch.end();
 
         // myGdxGame.debugRenderer.render(myGdxGame.world, myGdxGame.camera.combined);
@@ -77,6 +92,16 @@ public class GameScreen extends ScreenAdapter {
             if (!trashArray.get(i).isInFrame()) {
                 myGdxGame.world.destroyBody(trashArray.get(i).body);
                 trashArray.remove(i--);
+            }
+        }
+    }
+
+    private void updateBullets() {
+        System.out.println("size: " + bulletArray.size());
+        for (int i = 0; i < bulletArray.size(); i++) {
+            if (bulletArray.get(i).hasToBeDestroyed()) {
+                myGdxGame.world.destroyBody(bulletArray.get(i).body);
+                bulletArray.remove(i--);
             }
         }
     }
