@@ -35,14 +35,6 @@ public class GameObject {
                 height);
     }
 
-    public boolean isHit() {
-        return false;
-    }
-
-    public void move() {
-
-    }
-
     public float getX() {
         return body.getPosition().x / SCALE;
     }

@@ -14,7 +14,11 @@ public class ShipObject extends GameObject {
     }
 
     public void move(Vector3 vector3) {
-        body.applyForceToCenter(new Vector2((vector3.x - getX()) * 4, (vector3.y - getY()) * 4), true);
+        body.applyForceToCenter(new Vector2(
+                        (vector3.x - getX()) * GameSettings.SHIP_FORCE_RATIO,
+                        (vector3.y - getY()) * GameSettings.SHIP_FORCE_RATIO),
+                true
+        );
     }
 
     private void putInFrame() {

@@ -14,6 +14,6 @@ public class GameSettings {
     public static final int POSITION_ITERATIONS = 6;
     public static final float SCALE = 0.05f;
 
-    public static int SHOOTING_COOL_DOWN = 1000; // in [ms] - milliseconds
+    public static float SHIP_FORCE_RATIO = 4;
 
 }
