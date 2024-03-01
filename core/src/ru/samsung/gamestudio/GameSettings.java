@@ -15,5 +15,7 @@ public class GameSettings {
     public static final float SCALE = 0.05f;
 
     public static float SHIP_FORCE_RATIO = 4;
+    public static float TRASH_VELOCITY = 20;
+    public static long STARTING_ENEMY_APPEARANCE_COOL_DOWN = 2000; // in [ms] - milliseconds
 
 }
