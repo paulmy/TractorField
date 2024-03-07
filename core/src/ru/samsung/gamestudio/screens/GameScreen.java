@@ -9,6 +9,7 @@ import ru.samsung.gamestudio.ContactManager;
 import ru.samsung.gamestudio.GameSession;
 import ru.samsung.gamestudio.GameSettings;
 import ru.samsung.gamestudio.MyGdxGame;
+import ru.samsung.gamestudio.components.*;
 import ru.samsung.gamestudio.objects.BulletObject;
 import ru.samsung.gamestudio.objects.ShipObject;
 import ru.samsung.gamestudio.objects.TrashObject;
@@ -26,6 +27,12 @@ public class GameScreen extends ScreenAdapter {
 
     ContactManager contactManager;
 
+    MovingBackgroundView backgroundView;
+    ImageView topBlackoutView;
+    LiveView liveView;
+    TextView scoreTextView;
+    ButtonView pauseButton;
+
     public GameScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         gameSession = new GameSession();
@@ -36,6 +43,12 @@ public class GameScreen extends ScreenAdapter {
         bulletArray = new ArrayList<>();
 
         shipObject = new ShipObject((GameSettings.SCREEN_WIDTH / 2f), 150, myGdxGame.world);
+
+        backgroundView = new MovingBackgroundView("textures/background.png");
+        topBlackoutView = new ImageView(0, 1180, "textures/top_blackout.png");
+        liveView = new LiveView(305, 1215);
+        scoreTextView = new TextView(myGdxGame.commonWhiteFont, 50, 1215);
+        pauseButton = new ButtonView(605, 1200, 46, 54, myGdxGame.commonBlackFont, "textures/pause_icon.png", "");
     }
 
     @Override
@@ -69,6 +82,7 @@ public class GameScreen extends ScreenAdapter {
 
         updateTrash();
         updateBullets();
+        backgroundView.move();
 
         draw();
     }
@@ -87,9 +101,14 @@ public class GameScreen extends ScreenAdapter {
         ScreenUtils.clear(Color.CLEAR);
 
         myGdxGame.batch.begin();
+        backgroundView.draw(myGdxGame.batch);
         for (TrashObject trash : trashArray) trash.draw(myGdxGame.batch);
         shipObject.draw(myGdxGame.batch);
         for (BulletObject bullet : bulletArray) bullet.draw(myGdxGame.batch);
+        topBlackoutView.draw(myGdxGame.batch);
+        scoreTextView.draw("Score: " + 100, myGdxGame.batch);
+        liveView.draw(shipObject.getLiveLeft(), myGdxGame.batch);
+        pauseButton.draw(myGdxGame.batch);
         myGdxGame.batch.end();
 
         myGdxGame.debugRenderer.render(myGdxGame.world, myGdxGame.camera.combined);

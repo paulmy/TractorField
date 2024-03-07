@@ -2,7 +2,9 @@ package ru.samsung.gamestudio;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -18,6 +20,10 @@ public class MyGdxGame extends Game {
     public World world;
     public Box2DDebugRenderer debugRenderer;
 
+    public BitmapFont largeWhiteFont;
+    public BitmapFont commonWhiteFont;
+    public BitmapFont commonBlackFont;
+
     public Vector3 touch;
     public SpriteBatch batch;
     public OrthographicCamera camera;
@@ -32,6 +38,10 @@ public class MyGdxGame extends Game {
         Box2D.init();
         debugRenderer = new Box2DDebugRenderer();
         world = new World(new Vector2(0, 0), true);
+
+        largeWhiteFont = FontBuilder.generate(48, Color.WHITE, "fonts/Montserrat-Bold.ttf");
+        commonWhiteFont = FontBuilder.generate(24, Color.WHITE, "fonts/Montserrat-Bold.ttf");
+        commonBlackFont = FontBuilder.generate(24, Color.BLACK, "fonts/Montserrat-Bold.ttf");
 
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
