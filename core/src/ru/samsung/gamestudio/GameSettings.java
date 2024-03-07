@@ -20,4 +20,8 @@ public class GameSettings {
     public static int BULLET_VELOCITY = 200; // in [m/s] - meter per second
     public static int SHOOTING_COOL_DOWN = 1000; // in [ms] - milliseconds
 
+    public static final short TRASH_BIT = 2;
+    public static final short SHIP_BIT = 4;
+    public static final short BULLET_BIT = 8;
+
 }

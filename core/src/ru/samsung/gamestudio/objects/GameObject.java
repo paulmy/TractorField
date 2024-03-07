@@ -13,15 +13,18 @@ import static ru.samsung.gamestudio.GameSettings.SCALE;
 
 public class GameObject {
 
+    public short cBits;
+
     public float width;
     public float height;
 
     public Body body;
     Texture texture;
 
-    GameObject(String texturePath, float x, float y, float width, float height, World world) {
+    GameObject(String texturePath, float x, float y, float width, float height, short cBits, World world) {
         this.width = width;
         this.height = height;
+        this.cBits = cBits;
 
         texture = new Texture(texturePath);
         body = createBody(x * SCALE, y * SCALE, world);
@@ -33,6 +36,10 @@ public class GameObject {
                 body.getPosition().y / SCALE - (height / 2f),
                 width,
                 height);
+    }
+
+    public void hit() {
+        // all physics objects could be hit
     }
 
     public float getX() {
@@ -64,6 +71,7 @@ public class GameObject {
         fixtureDef.shape = circleShape;
         fixtureDef.density = 0.1f;
         fixtureDef.friction = 1f;
+        fixtureDef.filter.categoryBits = cBits;
 
         Fixture fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);

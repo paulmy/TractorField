@@ -10,10 +10,12 @@ import ru.samsung.gamestudio.GameSettings;
 public class ShipObject extends GameObject {
 
     long lastShotTime;
+    int livesLeft;
 
     public ShipObject(float x, float y, World world) {
-        super("textures/ship.png", x, y, 150, 150, world);
+        super("textures/ship.png", x, y, 150, 150, GameSettings.SHIP_BIT, world);
         body.setLinearDamping(3);
+        livesLeft = 3;
     }
 
     @Override
@@ -53,4 +55,12 @@ public class ShipObject extends GameObject {
         return false;
     }
 
+    @Override
+    public void hit() {
+        livesLeft -= 1;
+    }
+
+    public boolean isAlive() {
+        return livesLeft > 0;
+    }
 }
