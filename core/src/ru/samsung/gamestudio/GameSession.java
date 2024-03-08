@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class GameSession {
 
+    public GameState state;
     long nextEnemySpawnTime;
     long sessionStartTime;
 
@@ -14,9 +15,18 @@ public class GameSession {
     }
 
     public void startGame() {
+        state = GameState.PLAYING;
         sessionStartTime = TimeUtils.millis();
         nextEnemySpawnTime = sessionStartTime + (long) (GameSettings.STARTING_ENEMY_APPEARANCE_COOL_DOWN
                 * getEnemyPeriodCoolDown());
+    }
+
+    public void pauseGame() {
+        state = GameState.PAUSED;
+    }
+
+    public void resumeGame() {
+        state = GameState.PLAYING;
     }
 
     public boolean shouldSpawnTrash() {

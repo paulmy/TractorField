@@ -18,7 +18,7 @@ import static ru.samsung.gamestudio.GameSettings.*;
 public class MyGdxGame extends Game {
 
     public World world;
-    public Box2DDebugRenderer debugRenderer;
+    // public Box2DDebugRenderer debugRenderer;
 
     public BitmapFont largeWhiteFont;
     public BitmapFont commonWhiteFont;
@@ -36,7 +36,7 @@ public class MyGdxGame extends Game {
     public void create() {
 
         Box2D.init();
-        debugRenderer = new Box2DDebugRenderer();
+        // debugRenderer = new Box2DDebugRenderer();
         world = new World(new Vector2(0, 0), true);
 
         largeWhiteFont = FontBuilder.generate(48, Color.WHITE, "fonts/Montserrat-Bold.ttf");
