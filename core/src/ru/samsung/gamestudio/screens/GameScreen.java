@@ -80,7 +80,7 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        gameSession.startGame();
+        restartGame();
     }
 
     @Override
@@ -134,7 +134,7 @@ public class GameScreen extends ScreenAdapter {
                         gameSession.resumeGame();
                     }
                     if (homeButton.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
-                        System.out.println("end of game");
+                        myGdxGame.setScreen(myGdxGame.menuScreen);
                     }
                     break;
             }
@@ -187,4 +187,21 @@ public class GameScreen extends ScreenAdapter {
             }
         }
     }
+
+    private void restartGame() {
+
+        for (int i = 0; i < trashArray.size(); i++) {
+            myGdxGame.world.destroyBody(trashArray.get(i).body);
+            trashArray.remove(i--);
+        }
+
+        if (shipObject != null) {
+            myGdxGame.world.destroyBody(shipObject.body);
+        }
+
+        shipObject = new ShipObject((GameSettings.SCREEN_WIDTH / 2f), 150, myGdxGame.world);
+        bulletArray.clear();
+        gameSession.startGame();
+    }
+
 }

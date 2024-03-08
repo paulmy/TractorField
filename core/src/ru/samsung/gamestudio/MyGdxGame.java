@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import ru.samsung.gamestudio.screens.GameScreen;
+import ru.samsung.gamestudio.screens.MenuScreen;
 
 import static ru.samsung.gamestudio.GameSettings.*;
 
@@ -29,6 +30,7 @@ public class MyGdxGame extends Game {
     public OrthographicCamera camera;
 
     public GameScreen gameScreen;
+    public MenuScreen menuScreen;
 
     float accumulator = 0;
 
@@ -48,8 +50,9 @@ public class MyGdxGame extends Game {
         camera.setToOrtho(false, GameSettings.SCREEN_WIDTH, GameSettings.SCREEN_HEIGHT);
 
         gameScreen = new GameScreen(this);
+        menuScreen = new MenuScreen(this);
 
-        setScreen(gameScreen);
+        setScreen(menuScreen);
     }
 
     @Override
