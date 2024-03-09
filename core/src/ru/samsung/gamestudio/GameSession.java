@@ -1,21 +1,22 @@
 package ru.samsung.gamestudio;
-
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import java.util.ArrayList;
 
 public class GameSession {
 
     public GameState state;
     long nextEnemySpawnTime;
     long sessionStartTime;
+    private int score;
+    int kills;
 
     public GameSession() {
     }
 
     public void startGame() {
         state = GameState.PLAYING;
+        score = 0;
+        kills = 0;
         sessionStartTime = TimeUtils.millis();
         nextEnemySpawnTime = sessionStartTime + (long) (GameSettings.STARTING_ENEMY_APPEARANCE_COOL_DOWN
                 * getEnemyPeriodCoolDown());
@@ -27,6 +28,18 @@ public class GameSession {
 
     public void resumeGame() {
         state = GameState.PLAYING;
+    }
+
+    public void killRegistration() {
+        kills += 1;
+    }
+
+    public void updateScore() {
+        score = (int) (TimeUtils.millis() - sessionStartTime) / 100 + kills * 100;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public boolean shouldSpawnTrash() {

@@ -111,6 +111,7 @@ public class GameScreen extends ScreenAdapter {
             updateTrash();
             updateBullets();
             backgroundView.move();
+            gameSession.updateScore();
 
             myGdxGame.stepWorld();
         }
@@ -155,7 +156,7 @@ public class GameScreen extends ScreenAdapter {
         shipObject.draw(myGdxGame.batch);
         for (BulletObject bullet : bulletArray) bullet.draw(myGdxGame.batch);
         topBlackoutView.draw(myGdxGame.batch);
-        scoreTextView.draw("Score: " + 100, myGdxGame.batch);
+        scoreTextView.draw("Score: " + gameSession.getScore(), myGdxGame.batch);
         liveView.draw(shipObject.getLiveLeft(), myGdxGame.batch);
         pauseButton.draw(myGdxGame.batch);
 
@@ -177,6 +178,7 @@ public class GameScreen extends ScreenAdapter {
             boolean hasToBeDestroyed = !trashArray.get(i).isAlive() || !trashArray.get(i).isInFrame();
 
             if (!trashArray.get(i).isAlive()) {
+                gameSession.killRegistration();
                 if (myGdxGame.audioManager.isSoundOn) myGdxGame.audioManager.explosionSound.play(0.2f);
             }
 
