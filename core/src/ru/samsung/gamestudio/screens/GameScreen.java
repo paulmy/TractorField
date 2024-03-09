@@ -37,6 +37,11 @@ public class GameScreen extends ScreenAdapter {
     ButtonView homeButton;
     ButtonView continueButton;
 
+    // ENDED state UI
+    TextView recordsTextView;
+    RecordsListView recordsListView;
+    ButtonView homeButton2;
+
     public GameScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
         gameSession = new GameSession();
@@ -76,6 +81,16 @@ public class GameScreen extends ScreenAdapter {
                 "Continue"
         );
 
+        recordsListView = new RecordsListView(myGdxGame.commonWhiteFont, 690);
+        recordsTextView = new TextView(myGdxGame.largeWhiteFont, 206, 842, "Last records");
+        homeButton2 = new ButtonView(
+                280, 365,
+                160, 70,
+                myGdxGame.commonBlackFont,
+                "textures/button_background_1.png",
+                "Home"
+        );
+
     }
 
     @Override
@@ -105,7 +120,8 @@ public class GameScreen extends ScreenAdapter {
             }
 
             if (!shipObject.isAlive()) {
-                System.out.println("Game over!");
+                gameSession.endGame();
+                recordsListView.setRecords(MemoryManager.loadRecordsTable());
             }
 
             updateTrash();
@@ -139,6 +155,13 @@ public class GameScreen extends ScreenAdapter {
                         myGdxGame.setScreen(myGdxGame.menuScreen);
                     }
                     break;
+
+                case ENDED:
+
+                    if (homeButton2.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
+                        myGdxGame.setScreen(myGdxGame.menuScreen);
+                    }
+                    break;
             }
 
         }
@@ -165,6 +188,11 @@ public class GameScreen extends ScreenAdapter {
             pauseTextView.draw(myGdxGame.batch);
             homeButton.draw(myGdxGame.batch);
             continueButton.draw(myGdxGame.batch);
+        } else if (gameSession.state == GameState.ENDED) {
+            fullBlackoutView.draw(myGdxGame.batch);
+            recordsTextView.draw(myGdxGame.batch);
+            recordsListView.draw(myGdxGame.batch);
+            homeButton2.draw(myGdxGame.batch);
         }
 
         myGdxGame.batch.end();

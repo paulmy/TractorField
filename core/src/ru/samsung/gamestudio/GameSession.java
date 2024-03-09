@@ -1,6 +1,8 @@
 package ru.samsung.gamestudio;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import java.util.ArrayList;
+
 
 public class GameSession {
 
@@ -28,6 +30,21 @@ public class GameSession {
 
     public void resumeGame() {
         state = GameState.PLAYING;
+    }
+
+    public void endGame() {
+        updateScore();
+        state = GameState.ENDED;
+        ArrayList<Integer> recordsTable = MemoryManager.loadRecordsTable();
+        if (recordsTable == null) {
+            recordsTable = new ArrayList<>();
+        }
+        int foundIdx = 0;
+        for (; foundIdx < recordsTable.size(); foundIdx++) {
+            if (recordsTable.get(foundIdx) < getScore()) break;
+        }
+        recordsTable.add(foundIdx, getScore());
+        MemoryManager.saveTableOfRecords(recordsTable);
     }
 
     public void killRegistration() {

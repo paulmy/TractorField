@@ -10,26 +10,6 @@ public class MemoryManager {
 
     private static final Preferences preferences = Gdx.app.getPreferences("User saves");
 
-    /*public static void saveTableOfRecords(ArrayList<Integer> table) {
-
-        Json json = new Json();
-        String tableInString = json.toJson(table);
-
-        preferences.putString("recordsTable", tableInString);
-        preferences.flush();
-    }
-
-    public static ArrayList<Integer> loadRecordsTable() {
-        if (!preferences.contains("recordsTable"))
-            return null;
-
-        String scores = preferences.getString("recordsTable");
-
-        Json json = new Json();
-        ArrayList<Integer> table = json.fromJson(ArrayList.class, scores);
-        return table;
-    }
-*/
     public static void saveSoundSettings(boolean isOn) {
         preferences.putBoolean("isSoundOn", isOn);
         preferences.flush();
@@ -46,6 +26,24 @@ public class MemoryManager {
 
     public static boolean loadIsMusicOn() {
         return preferences.getBoolean("isMusicOn", true);
+    }
+
+    public static void saveTableOfRecords(ArrayList<Integer> table) {
+
+        Json json = new Json();
+        String tableInString = json.toJson(table);
+        preferences.putString("recordTable", tableInString);
+        preferences.flush();
+    }
+
+    public static ArrayList<Integer> loadRecordsTable() {
+        if (!preferences.contains("recordTable"))
+            return null;
+
+        String scores = preferences.getString("recordTable");
+        Json json = new Json();
+        ArrayList<Integer> table = json.fromJson(ArrayList.class, scores);
+        return table;
     }
 
 }
