@@ -1,6 +1,7 @@
-package ru.samsung.gamestudio;
+package ru.samsung.gamestudio.managers;
 
 import com.badlogic.gdx.physics.box2d.*;
+import ru.samsung.gamestudio.GameSettings;
 import ru.samsung.gamestudio.objects.GameObject;
 
 public class ContactManager {

@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ru.samsung.gamestudio.*;
 import ru.samsung.gamestudio.components.*;
+import ru.samsung.gamestudio.managers.ContactManager;
+import ru.samsung.gamestudio.managers.MemoryManager;
 import ru.samsung.gamestudio.objects.BulletObject;
 import ru.samsung.gamestudio.objects.ShipObject;
 import ru.samsung.gamestudio.objects.TrashObject;

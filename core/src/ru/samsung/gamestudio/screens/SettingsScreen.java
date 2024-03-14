@@ -5,7 +5,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
-import ru.samsung.gamestudio.MemoryManager;
+import ru.samsung.gamestudio.managers.MemoryManager;
 import ru.samsung.gamestudio.MyGdxGame;
 import ru.samsung.gamestudio.components.ButtonView;
 import ru.samsung.gamestudio.components.ImageView;

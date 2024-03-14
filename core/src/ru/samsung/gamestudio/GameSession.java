@@ -1,5 +1,6 @@
 package ru.samsung.gamestudio;
 import com.badlogic.gdx.utils.TimeUtils;
+import ru.samsung.gamestudio.managers.MemoryManager;
 
 import java.util.ArrayList;
 
