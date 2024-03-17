@@ -14,7 +14,7 @@ public class ShipObject extends GameObject {
 
     public ShipObject(float x, float y, World world) {
         super("textures/ship.png", x, y, 150, 150, GameSettings.SHIP_BIT, world);
-        body.setLinearDamping(3);
+        body.setLinearDamping(10);
         livesLeft = 3;
     }
 

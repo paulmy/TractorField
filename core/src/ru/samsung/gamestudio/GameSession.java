@@ -10,6 +10,7 @@ public class GameSession {
     public GameState state;
     long nextEnemySpawnTime;
     long sessionStartTime;
+    long pauseStartTime;
     private int score;
     int kills;
 
@@ -27,10 +28,12 @@ public class GameSession {
 
     public void pauseGame() {
         state = GameState.PAUSED;
+        pauseStartTime = TimeUtils.millis();
     }
 
     public void resumeGame() {
         state = GameState.PLAYING;
+        sessionStartTime += TimeUtils.millis() - pauseStartTime;
     }
 
     public void endGame() {

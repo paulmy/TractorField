@@ -14,7 +14,7 @@ public class GameSettings {
     public static final int POSITION_ITERATIONS = 6;
     public static final float SCALE = 0.05f;
 
-    public static float SHIP_FORCE_RATIO = 4;
+    public static float SHIP_FORCE_RATIO = 10;
     public static float TRASH_VELOCITY = 20;
     public static long STARTING_ENEMY_APPEARANCE_COOL_DOWN = 2000; // in [ms] - milliseconds
     public static int BULLET_VELOCITY = 200; // in [m/s] - meter per second

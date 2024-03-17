@@ -61,9 +61,8 @@ public class GameScreen extends ScreenAdapter {
         scoreTextView = new TextView(myGdxGame.commonWhiteFont, 50, 1215);
         pauseButton = new ButtonView(
                 605, 1200,
-                46, 54, myGdxGame.commonBlackFont,
-                "textures/pause_icon.png",
-                ""
+                46, 54,
+                "textures/pause_icon.png"
         );
 
         fullBlackoutView = new ImageView(0, 0, "textures/blackout_full.png");
@@ -130,6 +129,8 @@ public class GameScreen extends ScreenAdapter {
             updateBullets();
             backgroundView.move();
             gameSession.updateScore();
+            scoreTextView.setText("Score: " + gameSession.getScore());
+            liveView.setLeftLives(shipObject.getLiveLeft());
 
             myGdxGame.stepWorld();
         }
@@ -181,8 +182,8 @@ public class GameScreen extends ScreenAdapter {
         shipObject.draw(myGdxGame.batch);
         for (BulletObject bullet : bulletArray) bullet.draw(myGdxGame.batch);
         topBlackoutView.draw(myGdxGame.batch);
-        scoreTextView.draw("Score: " + gameSession.getScore(), myGdxGame.batch);
-        liveView.draw(shipObject.getLiveLeft(), myGdxGame.batch);
+        scoreTextView.draw(myGdxGame.batch);
+        liveView.draw(myGdxGame.batch);
         pauseButton.draw(myGdxGame.batch);
 
         if (gameSession.state == GameState.PAUSED) {

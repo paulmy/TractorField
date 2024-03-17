@@ -7,17 +7,13 @@ import ru.samsung.gamestudio.GameSettings;
 
 import java.util.ArrayList;
 
-public class RecordsListView {
-
-    float x;
-    float y;
+public class RecordsListView extends View {
 
     BitmapFont font;
     String recordsListString;
 
     public RecordsListView(BitmapFont font, float y) {
-        this.y = y;
-        x = 0;
+        super(0, y, 0, 0);
         this.font = font;
         recordsListString = "";
     }
@@ -34,10 +30,12 @@ public class RecordsListView {
         x = (GameSettings.SCREEN_WIDTH - glyphLayout.width) / 2;
     }
 
+    @Override
     public void draw(SpriteBatch batch) {
         font.draw(batch, recordsListString, x, y);
     }
 
+    @Override
     public void dispose() {
         font.dispose();
     }

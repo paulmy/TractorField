@@ -3,17 +3,12 @@ package ru.samsung.gamestudio.components;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class ImageView {
-
-    float x;
-    float y;
-
-    float width;
-    float height;
+public class ImageView extends View {
 
     Texture texture;
 
     public ImageView(float x, float y, String imagePath) {
+        super(x, y, 0, 0);
         this.x = x;
         this.y = y;
         texture = new Texture(imagePath);
@@ -21,13 +16,14 @@ public class ImageView {
         this.height = texture.getHeight() ;
     }
 
+    @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texture, x, y, width, height);
     }
 
+    @Override
     public void dispose() {
         texture.dispose();
     }
-
 
 }
