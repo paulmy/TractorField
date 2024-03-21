@@ -24,4 +24,15 @@ public class GameSettings {
     public static final short SHIP_BIT = 4;
     public static final short BULLET_BIT = 8;
 
+    // Object sizes
+
+    public static final int SHIP_WIDTH = 150;
+    public static final int SHIP_HEIGHT = 150;
+    public static final int TRASH_WIDTH = 140;
+    public static final int TRASH_HEIGHT = 100;
+    public static final int BULLET_WIDTH = 15;
+    public static final int BULLET_HEIGHT = 45;
+
+
+
 }

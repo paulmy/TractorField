@@ -15,13 +15,13 @@ public class GameObject {
 
     public short cBits;
 
-    public float width;
-    public float height;
+    public int width;
+    public int height;
 
     public Body body;
     Texture texture;
 
-    GameObject(String texturePath, float x, float y, float width, float height, short cBits, World world) {
+    GameObject(String texturePath, int x, int y, int width, int height, short cBits, World world) {
         this.width = width;
         this.height = height;
         this.cBits = cBits;
@@ -42,19 +42,19 @@ public class GameObject {
         // all physics objects could be hit
     }
 
-    public float getX() {
-        return body.getPosition().x / SCALE;
+    public int getX() {
+        return (int) (body.getPosition().x / SCALE);
     }
 
-    public float getY() {
-        return body.getPosition().y / SCALE;
+    public int getY() {
+        return (int) (body.getPosition().y / SCALE);
     }
 
-    public void setX(float x) {
+    public void setX(int x) {
         body.setTransform(x * SCALE, body.getPosition().y, 0);
     }
 
-    public void setY(float y) {
+    public void setY(int y) {
         body.setTransform(body.getPosition().x, y * SCALE, 0);
     }
 

@@ -2,23 +2,22 @@ package ru.samsung.gamestudio.objects;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import ru.samsung.gamestudio.GameResources;
 import ru.samsung.gamestudio.GameSettings;
 
 import java.util.Random;
 
 public class TrashObject extends GameObject {
 
-    private static final float paddingHorizontal = 30f;
+    private static final int paddingHorizontal = 30;
 
     private int livesLeft;
 
-    public TrashObject(World world) {
+    public TrashObject(int width, int height, String texturePath, World world) {
         super(
-                GameResources.TRASH_IMG_PATH,
-                140f / 2 + paddingHorizontal + (new Random()).nextInt((int) (GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - 140)),
-                GameSettings.SCREEN_HEIGHT + 100f / 2,
-                140, 100,
+                texturePath,
+                width / 2 + paddingHorizontal + (new Random()).nextInt((GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - width)),
+                GameSettings.SCREEN_HEIGHT + height / 2,
+                width, height,
                 GameSettings.TRASH_BIT,
                 world
         );
