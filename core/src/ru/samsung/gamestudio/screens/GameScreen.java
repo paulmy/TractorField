@@ -55,30 +55,30 @@ public class GameScreen extends ScreenAdapter {
 
         shipObject = new ShipObject((GameSettings.SCREEN_WIDTH / 2f), 150, myGdxGame.world);
 
-        backgroundView = new MovingBackgroundView("textures/background.png");
-        topBlackoutView = new ImageView(0, 1180, "textures/top_blackout.png");
+        backgroundView = new MovingBackgroundView(GameResources.BACKGROUND_IMG_PATH);
+        topBlackoutView = new ImageView(0, 1180, GameResources.BLACKOUT_TOP_IMG_PATH);
         liveView = new LiveView(305, 1215);
         scoreTextView = new TextView(myGdxGame.commonWhiteFont, 50, 1215);
         pauseButton = new ButtonView(
                 605, 1200,
                 46, 54,
-                "textures/pause_icon.png"
+                GameResources.PAUSE_IMG_PATH
         );
 
-        fullBlackoutView = new ImageView(0, 0, "textures/blackout_full.png");
+        fullBlackoutView = new ImageView(0, 0, GameResources.BLACKOUT_FULL_IMG_PATH);
         pauseTextView = new TextView(myGdxGame.largeWhiteFont, 282, 842, "Pause");
         homeButton = new ButtonView(
                 138, 695,
                 200, 70,
                 myGdxGame.commonBlackFont,
-                "textures/button_background_1.png",
+                GameResources.BUTTON_SHORT_BG_IMG_PATH,
                 "Home"
         );
         continueButton = new ButtonView(
                 393, 695,
                 200, 70,
                 myGdxGame.commonBlackFont,
-                "textures/button_background_1.png",
+                GameResources.BUTTON_SHORT_BG_IMG_PATH,
                 "Continue"
         );
 
@@ -88,7 +88,7 @@ public class GameScreen extends ScreenAdapter {
                 280, 365,
                 160, 70,
                 myGdxGame.commonBlackFont,
-                "textures/button_background_1.png",
+                GameResources.BUTTON_SHORT_BG_IMG_PATH,
                 "Home"
         );
 

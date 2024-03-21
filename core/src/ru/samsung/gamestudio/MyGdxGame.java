@@ -42,9 +42,9 @@ public class MyGdxGame extends Game {
         Box2D.init();
         world = new World(new Vector2(0, 0), true);
 
-        largeWhiteFont = FontBuilder.generate(48, Color.WHITE, "fonts/Montserrat-Bold.ttf");
-        commonWhiteFont = FontBuilder.generate(24, Color.WHITE, "fonts/Montserrat-Bold.ttf");
-        commonBlackFont = FontBuilder.generate(24, Color.BLACK, "fonts/Montserrat-Bold.ttf");
+        largeWhiteFont = FontBuilder.generate(48, Color.WHITE, GameResources.FONT_PATH);
+        commonWhiteFont = FontBuilder.generate(24, Color.WHITE, GameResources.FONT_PATH);
+        commonBlackFont = FontBuilder.generate(24, Color.BLACK, GameResources.FONT_PATH);
 
         batch = new SpriteBatch();
         camera = new OrthographicCamera();

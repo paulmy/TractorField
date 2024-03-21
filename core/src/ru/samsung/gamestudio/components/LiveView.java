@@ -2,6 +2,7 @@ package ru.samsung.gamestudio.components;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ru.samsung.gamestudio.GameResources;
 
 public class LiveView extends View {
 
@@ -15,7 +16,7 @@ public class LiveView extends View {
         super(x, y, 0, 0);
         this.x = x;
         this.y = y;
-        texture = new Texture("textures/life.png");
+        texture = new Texture(GameResources.LIVE_IMG_PATH);
         this.width = texture.getWidth();
         this.height = texture.getHeight();
         leftLives = 0;

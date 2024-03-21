@@ -2,6 +2,7 @@ package ru.samsung.gamestudio.objects;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import ru.samsung.gamestudio.GameResources;
 import ru.samsung.gamestudio.GameSettings;
 
 import java.util.Random;
@@ -14,7 +15,7 @@ public class TrashObject extends GameObject {
 
     public TrashObject(World world) {
         super(
-                "textures/trash.png",
+                GameResources.TRASH_IMG_PATH,
                 140f / 2 + paddingHorizontal + (new Random()).nextInt((int) (GameSettings.SCREEN_WIDTH - 2 * paddingHorizontal - 140)),
                 GameSettings.SCREEN_HEIGHT + 100f / 2,
                 140, 100,

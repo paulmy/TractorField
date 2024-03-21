@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
+import ru.samsung.gamestudio.GameResources;
 import ru.samsung.gamestudio.GameSettings;
 
 public class ShipObject extends GameObject {
@@ -13,7 +14,7 @@ public class ShipObject extends GameObject {
     int livesLeft;
 
     public ShipObject(float x, float y, World world) {
-        super("textures/ship.png", x, y, 150, 150, GameSettings.SHIP_BIT, world);
+        super(GameResources.SHIP_IMG_PATH, x, y, 150, 150, GameSettings.SHIP_BIT, world);
         body.setLinearDamping(10);
         livesLeft = 3;
     }
