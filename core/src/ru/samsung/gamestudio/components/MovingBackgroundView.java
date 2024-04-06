@@ -14,7 +14,7 @@ public class MovingBackgroundView extends View {
     int speed = 2;
 
     public MovingBackgroundView(String pathToTexture) {
-        super(0, 0, 0, 0);
+        super(0, 0);
         texture1Y = 0;
         texture2Y = GameSettings.SCREEN_HEIGHT;
         texture = new Texture(pathToTexture);

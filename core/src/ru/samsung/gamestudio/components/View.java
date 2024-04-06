@@ -18,6 +18,11 @@ public class View implements Disposable {
         this.height = height;
     }
 
+    public View(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public boolean isHit(float tx, float ty) {
         return (tx >= x && tx <= x + width && ty >= y && ty <= y + height);
     }

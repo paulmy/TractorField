@@ -8,9 +8,7 @@ public class ImageView extends View {
     Texture texture;
 
     public ImageView(float x, float y, String imagePath) {
-        super(x, y, 0, 0);
-        this.x = x;
-        this.y = y;
+        super(x, y);
         texture = new Texture(imagePath);
         this.width = texture.getWidth() ;
         this.height = texture.getHeight() ;

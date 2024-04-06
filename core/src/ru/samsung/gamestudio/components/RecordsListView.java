@@ -13,7 +13,7 @@ public class RecordsListView extends View {
     String recordsListString;
 
     public RecordsListView(BitmapFont font, float y) {
-        super(0, y, 0, 0);
+        super(0, y);
         this.font = font;
         recordsListString = "";
     }

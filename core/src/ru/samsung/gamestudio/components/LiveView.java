@@ -13,9 +13,7 @@ public class LiveView extends View {
     private int leftLives;
 
     public LiveView(float x, float y) {
-        super(x, y, 0, 0);
-        this.x = x;
-        this.y = y;
+        super(x, y);
         texture = new Texture(GameResources.LIVE_IMG_PATH);
         this.width = texture.getWidth();
         this.height = texture.getHeight();
