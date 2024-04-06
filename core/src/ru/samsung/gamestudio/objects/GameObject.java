@@ -27,13 +27,13 @@ public class GameObject {
         this.cBits = cBits;
 
         texture = new Texture(texturePath);
-        body = createBody(x * SCALE, y * SCALE, world);
+        body = createBody(x, y, world);
     }
 
     public void draw(SpriteBatch batch) {
         batch.draw(texture,
-                body.getPosition().x / SCALE - (width / 2f),
-                body.getPosition().y / SCALE - (height / 2f),
+                getX() - (width / 2f),
+                getY() - (height / 2f),
                 width,
                 height);
     }
@@ -77,7 +77,7 @@ public class GameObject {
         fixture.setUserData(this);
         circleShape.dispose();
 
-        body.setTransform(x, y, 0);
+        body.setTransform(x * SCALE, y * SCALE, 0);
         return body;
     }
 
