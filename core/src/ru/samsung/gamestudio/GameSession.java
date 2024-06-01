@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GameSession {
 
     public GameState state;
-    long nextEnemySpawnTime;
+    long nextTrashSpawnTime;
     long sessionStartTime;
     long pauseStartTime;
     private int score;
@@ -22,8 +22,8 @@ public class GameSession {
         score = 0;
         kills = 0;
         sessionStartTime = TimeUtils.millis();
-        nextEnemySpawnTime = sessionStartTime + (long) (GameSettings.STARTING_ENEMY_APPEARANCE_COOL_DOWN
-                * getEnemyPeriodCoolDown());
+        nextTrashSpawnTime = sessionStartTime + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
+                * getTrashPeriodCoolDown());
     }
 
     public void pauseGame() {
@@ -64,15 +64,15 @@ public class GameSession {
     }
 
     public boolean shouldSpawnTrash() {
-        if (nextEnemySpawnTime <= TimeUtils.millis()) {
-            nextEnemySpawnTime = TimeUtils.millis() + (long) (GameSettings.STARTING_ENEMY_APPEARANCE_COOL_DOWN
-                    * getEnemyPeriodCoolDown());
+        if (nextTrashSpawnTime <= TimeUtils.millis()) {
+            nextTrashSpawnTime = TimeUtils.millis() + (long) (GameSettings.STARTING_TRASH_APPEARANCE_COOL_DOWN
+                    * getTrashPeriodCoolDown());
             return true;
         }
         return false;
     }
 
-    private float getEnemyPeriodCoolDown() {
+    private float getTrashPeriodCoolDown() {
         return (float) Math.exp(-0.001 * (TimeUtils.millis() - sessionStartTime + 1) / 1000);
     }
 }
