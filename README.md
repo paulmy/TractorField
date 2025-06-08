@@ -8,4 +8,5 @@
 ![GameScreen](https://github.com/paulmy/TractorField/blob/main/img/GameScreen.png)
 ![PauseScreen](https://github.com/paulmy/TractorField/blob/main/img/PauseScreen.png)
 
-![Video](https://github.com/paulmy/TractorField/blob/main/img/video.webm)
+![Video](https://github.com/paulmy/TractorField/blob/main/img/video.mp4)
+
